@@ -1,0 +1,27 @@
+{
+    "categories":[
+        "GAME",
+        "TOOLS",
+        "COMMUNICATION",
+        "PRODUCTIVITY",
+        "SOCIAL",
+        "PHOTOGRAPHY",
+        "TRAVEL_AND_LOCAL"
+    ],
+
+    "months":[
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+
+    ]
+}

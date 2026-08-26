@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Play Store Analytics Dashboard</title>
+
+    <link rel = "stylesheet" href = "style.css">
+
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>Loading Dashboard...</h2>
+            <p>Preparing Analytics</p>
+        </div>
+    </div>
+         
+    
+    <header class="dashboard-header">
+
+        <div class="header-left">
+
+            <h1>
+                
+                <i class="fa-brands fa-chart-line"></i>
+                <svg class="google-play-logo" viewBox="0 0 48 48" arial-label="Google Play">
+                    <path fill="#00D7FF" d="M5 4.5L28.5 24 5 43.5V4.5Z"/>
+                    <path fill="#00F076" d="M5 4.5L28.5 24 35 17.5 11.5 4.5C9 3.1 6.8 3.4 5 4.5Z"/>
+                    <path fill="#FFCF00" d="M5 43.5L28.5 24 35 30.5 11.5 43.5C9 44.9 6.8 44.6 5 43.5Z"/>
+                    <path fill="#FF3D68" d="M35 17.5L42 21.4C45.3 23.2 45.3 24.8 42 26.6L35 30.5 28.5 24 35 17.5Z"/>
+                </svg>
+                Google Play Store Analytics Dashboard
+            </h1>
+
+            <p>
+                Interactive Business Intelligence Dashboard
+            </p>    
+        </div>
+
+        <div class ="header-right">
+
+            <div class="last-update">
+                <i class="fa-regular fa-clock"></i>
+                <span id="current-date"></span>
+            </div>
+        </div>
+    </header>  
+    
+    <div class = "kpi-container">
+
+        <div class = "kpi-card">
+            <div class ="kpi-icon">📱</div>
+            <h3>Total Apps</h3>
+            <h2 id = "total-apps">0</h2>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-icon">⬇️</div>
+            <h3>Total Installs</h3>
+            <h2 id = "total-installs">0</h2>
+        </div>
+
+        <div class = "kpi-card">
+            <div class="kpi-icon">⭐</div>
+            <h3>Average Rating</h3>
+            <h2 id="avg-rating">0</h2>
+        </div>
+
+        <div class="kpi-card">
+            <div class="kpi-icon">📝</div>
+            <h3>Total Reviews</h3>
+            <h2 id="total-reviews">0</h2>
+        </div>
+
+    </div>
+    
+    <div class="filter-section">
+
+        <h2>
+            <i class="fa-solid fa-filter"></i>
+            🔍Dashboard Filters
+        </h2>
+
+        <div class="filter-grid">
+            <div class="filter-box">
+                <label>📂 Category</label>
+                <select id = "category-filter">
+                    <option value="All">All Category</option>
+                </select>
+            </div>
+
+            <div class="filter-box">
+                <label>📅 Month</label>
+
+                <select id="month-filter">
+                    <option value="All">All Months</option>
+                </select>
+            </div>
+
+            <div class="filter-box">
+                <label>⭐ Rating</label>
+                <select id="rating-filter">
+                    <option value="All">All Ratings</option>
+                    <option value="4.5">4.5+</option>
+                    <option value="4.0">4.0+</option>
+                    <option value="3.5">3.5+</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+
+        <div class="chart-card" id="Task1-card">
+
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>📊 Top Categories by Installs </h3>
+           <iframe id= "Task1-chart" src="charts/Task1.html"></iframe>
+        </div>
+        
+
+        <div class="chart-card" id="Task2-card">
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>🌍 Global Install Distribution</h3>
+            <iframe id="Task2-chart" src="charts/Task2.html"></iframe>
+        </div>
+
+        <div class="chart-card" id="Task3-card">
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>📈 Revenue vs Average Installs</h3>
+            <iframe id = "Task3-chart" src="charts/Task3.html"></iframe>
+        </div>
+
+        <div class="chart-card" id="Task4-card">
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>📉 Monthly Install Trends</h3>
+            <iframe id = "Task4-chart" src="charts/Task4.html"></iframe>
+        </div>
+
+        <div class="chart-card" id = "Task5-card">
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>🫧 Rating vs App Size Analysis</h3>
+            <iframe id = "Task5-chart" src="charts/Task5.html"></iframe>
+        </div>
+
+        <div class="chart-card" id = "Task6-card">
+            <div class="chart-top-bar"></div>
+            <div class="accent-line"></div>
+            <h3>📅 Monthly Cumulative Installs</h3>
+            <iframe id = "Task6-chart" src="charts/Task6.html"></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+<script>
+    function istHour() {
+        return new Date().toLocaleString("en-US", {
+            timeZone: "Asia/Kolkata",
+            hour: "numeric",
+            hour12: false
+        });
+    }
+
+    function showTask(id, start, end) {
+        let h = Number(istHour());
+        document.getElementById(id).style.display =
+        h >= start && h < end ? "block" : "none";
+    }
+
+    showTask("Task1-card", 15, 17);
+    showTask("Task2-card", 18, 20);
+    showTask("Task3-card", 13, 14);
+    showTask("Task4-card", 18, 21);
+    showTask("Task5-card",17, 19);
+    showTask("Task6-card", 16, 18);
+</script>
+</html>    
